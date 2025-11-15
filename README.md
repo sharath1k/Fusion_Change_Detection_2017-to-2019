@@ -1,2 +1,11 @@
 # Fusion_Change_Detection_2017-to-2019
 This project used Sentinel-1 and Sentinel-2 data accessed via the Copernicus API to detect land cover changes. After preprocessing and fusion, KMeans clustering identified shifts from barren to agricultural land with minimal urban change. The workflow demonstrated automated change detection
+This project aimed to demonstrate an end-to-end workflow for automated land cover change detection by integrating Sentinel-1 SAR and Sentinel-2 optical imagery. Data was programmatically accessed using the Copernicus Data Space Ecosystem API, with secure OAuth2 authentication. The OData interface was used to filter products by region of interest (ROI), dates, and sensor type, while the Zipper API enabled efficient chunked downloads of large datasets.
+
+Sentinel-2 Level-2A imagery was used as-is because it is already atmospherically corrected. For Sentinel-1 Level-1 GRD SAR data, extensive preprocessing was carried out including orbit correction, thermal noise removal, radiometric calibration, and speckle filtering. Finally, terrain correction was applied before clipping to the ROI. This preprocessing ensured geolocation accuracy, radiometric consistency, and reduced speckle noise—critical for meaningful fusion.
+
+For data integration, the Gram-Schmidt Spectral Sharpening method was used to fuse the images for the years 2017 and 2019. This method enhances spatial detail in multispectral bands using higher-resolution data (SAR in this case). Its advantages include improved spatial clarity and preservation of spectral information, though it may introduce spectral distortions in areas with high texture.
+
+The fused images were then classified using the KMeans algorithm, an unsupervised clustering technique. Five land cover classes were defined: barren, agriculture, forest, trees, and urban. Results indicated significant conversion of barren land to agriculture, with minimal urban expansion. This demonstrated effective change detection using a lightweight, scalable methodology without labeled training data.
+
+The project highlights the potential of integrating SAR and optical data for robust environmental monitoring and supports future workflow or UI enhancements for operational use.
