@@ -1,0 +1,19 @@
+Requirements: List of Python dependencies
+folium
+requests
+
+os
+shapely.wkt
+shapely.geometry
+datetime
+tqdm
+rasterio
+matplotlib numpy 
+glob
+pyproj
+rasterio.mask
+raterio.enums
+sklearn.cluster
+KMean
+reproject
+Resampling
