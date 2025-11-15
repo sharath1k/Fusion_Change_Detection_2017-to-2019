@@ -4,8 +4,17 @@ This project aimed to demonstrate an end-to-end workflow for automated land cove
 
 Sentinel-2 Level-2A imagery was used as-is because it is already atmospherically corrected. For Sentinel-1 Level-1 GRD SAR data, extensive preprocessing was carried out including orbit correction, thermal noise removal, radiometric calibration, and speckle filtering. Finally, terrain correction was applied before clipping to the ROI. This preprocessing ensured geolocation accuracy, radiometric consistency, and reduced speckle noise—critical for meaningful fusion.
 
-For data integration, the Gram-Schmidt Spectral Sharpening method was used to fuse the images for the years 2017 and 2019. This method enhances spatial detail in multispectral bands using higher-resolution data (SAR in this case). Its advantages include improved spatial clarity and preservation of spectral information, though it may introduce spectral distortions in areas with high texture.
+ The Gram-Schmidt Spectral Sharpening method was used to fuse the images for the years 2017 and 2019. This method enhances spatial detail in multispectral bands using higher-resolution data (SAR in this case). Its advantages include improved spatial clarity and preservation of spectral information, though it may introduce spectral distortions in areas with high texture.
 
 The fused images were then classified using the KMeans algorithm, an unsupervised clustering technique. Five land cover classes were defined: barren, agriculture, forest, trees, and urban. Results indicated significant conversion of barren land to agriculture, with minimal urban expansion. This demonstrated effective change detection using a lightweight, scalable methodology without labeled training data.
 
 The project highlights the potential of integrating SAR and optical data for robust environmental monitoring and supports future workflow or UI enhancements for operational use.
+
+To run the code, follow these steps:
+
+First, execute the Sentinel-1&2_download.ipynb file to automatically download the Sentinel-1 and Sentinel-2 data. If you want to use your own region of interest (ROI), modify the ROI in the code before running it.
+
+Next, run the Sentinel_1_and_2_Visualization.ipynb file to visualize the data and clip it to your specified ROI.
+
+Finally, run the Fusion_and_Change_Detection.ipynb file to perform data fusion and change detection.
+
